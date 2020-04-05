@@ -8,9 +8,7 @@ const handleApiCall = (req, res) => {
   app.models
     .predict(Clarifai.FACE_DETECT_MODEL, req.body.input)
     .then((data) => {
-      for (let i = 0; i < response.outputs[0].data.regions.length; i++) {
-        this.displayFaceBox(this.calculateFaceLocation(response, i));
-      }
+      res.json(data);
     })
     .catch((err) => res.status(400).json("unable to work with API"));
 };
